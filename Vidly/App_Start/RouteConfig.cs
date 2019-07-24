@@ -14,6 +14,17 @@ namespace Vidly
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                // Route Name
+                "MoviesByReleaseDate",
+                // URL Pattern
+                "movies/released/{year}/{month}",
+                // Defaults w/ anonymous object
+                new { controller = "Movies", action = "ByReleaseDate" },
+                // contraints
+                new { year = @"\d{4}", month = @"\d{2}" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

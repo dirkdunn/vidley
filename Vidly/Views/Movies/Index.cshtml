@@ -1,0 +1,28 @@
+﻿@model Vidly.ViewModels.MoviesViewModal
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            @*<th scope="col">Column heading</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.Movies)
+        {
+        <tr class="table-light">
+            <td>@movie.Id</td>
+            <td scope="row">@movie.Name</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
