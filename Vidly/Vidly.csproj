@@ -221,9 +221,22 @@
     <Compile Include="Migrations\201908051552311_PopulateMoviesTable.Designer.cs">
       <DependentUpon>201908051552311_PopulateMoviesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908051739180_CreateGenreTable.cs" />
+    <Compile Include="Migrations\201908051739180_CreateGenreTable.Designer.cs">
+      <DependentUpon>201908051739180_CreateGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051810468_AddReferenceDataToGenre.cs" />
+    <Compile Include="Migrations\201908051810468_AddReferenceDataToGenre.Designer.cs">
+      <DependentUpon>201908051810468_AddReferenceDataToGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051826226_AddForeignKeyToMoviesForGenre.cs" />
+    <Compile Include="Migrations\201908051826226_AddForeignKeyToMoviesForGenre.Designer.cs">
+      <DependentUpon>201908051826226_AddForeignKeyToMoviesForGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -346,6 +359,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908051552311_PopulateMoviesTable.resx">
       <DependentUpon>201908051552311_PopulateMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051739180_CreateGenreTable.resx">
+      <DependentUpon>201908051739180_CreateGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051810468_AddReferenceDataToGenre.resx">
+      <DependentUpon>201908051810468_AddReferenceDataToGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051826226_AddForeignKeyToMoviesForGenre.resx">
+      <DependentUpon>201908051826226_AddForeignKeyToMoviesForGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

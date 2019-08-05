@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -65,7 +66,7 @@ namespace Vidly.Controllers
                 sortBy = "Name";
             }
 
-            Movie movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            Movie movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
 
             return View(movie);
         }
@@ -77,7 +78,7 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
-            var movies = _context.Movies.ToList();
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
          
             var viewModal = new MoviesViewModal
             {
