@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+
 
 namespace Vidly.Controllers
 {
@@ -27,7 +29,7 @@ namespace Vidly.Controllers
         {
             var viewModal = new CustomersViewModal()
             {
-                Customers = _context.Customers.ToList()
+                Customers = _context.Customers.Include(c => c.MembershipType).ToList()
             };
                 
             return View(viewModal);
@@ -37,10 +39,10 @@ namespace Vidly.Controllers
         {
             if (!id.HasValue)
             {
-                id = 0;
+                id = 1;
             }
 
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            Customer customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             return View(customer);
         }

@@ -10,6 +10,17 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         [HttpGet]
         public ActionResult Random()
@@ -42,11 +53,11 @@ namespace Vidly.Controllers
         }
 
         //movies
-        public ActionResult Details(int? pageIndex, string sortBy)
+        public ActionResult Details(int? id, string sortBy)
         {
-            if (!pageIndex.HasValue)
+            if (!id.HasValue)
             {
-                pageIndex = 1;
+                id = 1;
             }
 
             if (String.IsNullOrWhiteSpace(sortBy))
@@ -54,7 +65,9 @@ namespace Vidly.Controllers
                 sortBy = "Name";
             }
 
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+            Movie movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            return View(movie);
         }
 
         public ActionResult ByReleaseDate(int year, int month)
@@ -64,11 +77,8 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
-            var movies = new List<Movie> {
-                new Movie { Id = 0, Name = "Shrek"},
-                new Movie { Id = 1, Name = "Lion King" }
-            };
-
+            var movies = _context.Movies.ToList();
+         
             var viewModal = new MoviesViewModal
             {
                 Movies = movies

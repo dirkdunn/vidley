@@ -17,5 +17,6 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
         // Entity recognizes this convention and will automatically use MembershipTypeId as a foreign key.
         public byte MembershipTypeId { get; set; }
+        public DateTime? Birthday { get; set; }
     }
 }

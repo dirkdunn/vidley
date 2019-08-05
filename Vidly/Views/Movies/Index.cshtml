@@ -10,8 +10,8 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Genre</th>
             @*<th scope="col">Column heading</th>*@
         </tr>
     </thead>
@@ -19,8 +19,8 @@
         @foreach (var movie in Model.Movies)
         {
         <tr class="table-light">
-            <td>@movie.Id</td>
-            <td scope="row">@movie.Name</td>
+            <td> @Html.ActionLink(@movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>
+            <td>@movie.Genre</td>
         </tr>
         }
     </tbody>
