@@ -16,7 +16,9 @@ namespace Vidly.Models
         // Navigation property, allows us to navigate from one model type to another (load a customer and its membership type together)
         public MembershipType MembershipType { get; set; }
         // Entity recognizes this convention and will automatically use MembershipTypeId as a foreign key.
+        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
+        [Display(Name = "Date of Birth")]
         public DateTime? Birthday { get; set; }
     }
 }
